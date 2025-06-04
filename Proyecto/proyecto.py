@@ -19,11 +19,11 @@ class Pet:
     def __init__(self,x,y):
         self.x = x
         self.y = y
-        self.hambre = 100
+        self.hambre = 100 #Siempre empezara el valor en 100
         self.felicidad = 100
         self.image = pet_image
 
-    def draw(self,surface):
+    def draw(self,surface): #El surface es por lo que entendi para que la imagen, en este caso de la mascota, salga sobre el fondo
         surface.blit(self.image, (self.x, self.y))
 
     def alimentar(self):
@@ -33,8 +33,8 @@ class Pet:
         self.felicidad=min(100,self.felicidad+10)
     
     def resta_stats(self):  #no sabia que nombre colocarle a la disminucion del hambre y felicidad
-        self.hambre=max(0,self.hambre -0.005)  #el 0,5 es un ejemplo de la velocidad a la que disminuye
-        self.felicidad=max(0,self.felicidad -0.003)
+        self.hambre=max(0,self.hambre -0.005)  #Esto establece que el hambre tenga como minimo 0 y el 0,5 es un ejemplo de la velocidad a la que disminuye
+        self.felicidad=max(0,self.felicidad -0.003) #mismo caso de arriba
 
     def valor_stats(self,surface):#esto de los valores es pa que se vean en pantalla
         texto_hambre=fuente.render(f"Hambre: {round(self.hambre,2)}", True, (255,255,255))
