@@ -26,6 +26,7 @@ class Pet:
     def draw(self,surface): #El surface es por lo que entendi para que la imagen, en este caso de la mascota, salga sobre el fondo
         surface.blit(self.image, (self.x, self.y))
 
+        #el alimentar y felicidad se podrian decir que son "stats" asociados a la mascota
     def alimentar(self):
         self.hambre=min(100,self.hambre+10)
 
@@ -42,8 +43,9 @@ class Pet:
         surface.blit(texto_felicidad,(50,50))
         surface.blit(texto_hambre,(50,100))
 
-pet = Pet(400, 356)
+pet = Pet(400, 356) #posicion de la mascota en la ventana, ademas la coordenada no es el centro de la imagen sino que es la esquina superior de la izquierda, terrible
 
+#de aqui para abajo seria como "funciona" el juego o como es su ciclo de juego 
 repetir=True
 while repetir:
 
