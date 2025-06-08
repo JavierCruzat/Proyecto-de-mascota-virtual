@@ -15,6 +15,9 @@ pet_image=pygame.image.load("Proyecto/imagenes/mogus3.jpg")
 boton_alimento_imag=pygame.image.load("Proyecto/imagenes/mogus2.jpg")
 boton_alimento_rect=boton_alimento_imag.get_rect(topleft=(800,100))
 
+boton_felicidad_imag=pygame.image.load("Proyecto/imagenes/mogus2.jpg")
+boton_felicidad_rect=boton_felicidad_imag.get_rect(topright=(200,120))
+
 fuente = pygame.font.SysFont(None,46) #esto es para la fuente de texto y el 46 el tamaño. 
 
 #esto es para "definir" los valores que tendra la mascota, en esta version solo sera una para simplificar las tareas
@@ -44,7 +47,23 @@ class Pet:
         texto_felicidad=fuente.render(f"Felicidad: {round(self.felicidad,2)}", True, (255,255,255))
         surface.blit(texto_felicidad,(50,50))
         surface.blit(texto_hambre,(50,100))
-
+    #moviemiento de la mascota
+    def pos_estandar(self):
+        if (self.felicidad>=80 and self.hambre>=80):
+            self.x=400
+            self.y=356
+    def mov_feli(self):
+        if self.felicidad<=60:
+            self.x=300
+            self.y=356
+            if self.felicidad<=40:
+                self.x=200
+                self.y=356
+    def mov_hambre(self):
+        if self.hambre<=99:
+            self.x=600
+            self.y=356
+            
 pet = Pet(400, 356)
 
 repetir=True
@@ -59,13 +78,20 @@ while repetir:
             if evento.type==pygame.MOUSEBUTTONDOWN:
                 if boton_alimento_rect.collidepoint(evento.pos):
                     pet.alimentar()#esto se modifica pa lo que necesites javier 
-
+            if evento.type==pygame.MOUSEBUTTONDOWN:
+                if boton_felicidad_rect.collidepoint(evento.pos):
+                    pet.jugar()#esto igual pero pa la felicidad
+    
         ventana.blit(Fondoimagen, (0,0))
         pet.draw(ventana)
         pet.valor_stats(ventana)
         pet.resta_stats()
         
+        pet.mov_feli()
+        pet.mov_hambre()
         ventana.blit(boton_alimento_imag, boton_alimento_rect.topleft)
+        ventana.blit(boton_felicidad_imag,boton_felicidad_rect.topright)
+        
         pygame.display.flip()
 
 pygame.quit()
