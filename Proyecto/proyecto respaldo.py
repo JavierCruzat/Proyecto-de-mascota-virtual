@@ -61,9 +61,12 @@ class Pet:
                 self.x=200
                 self.y=356
     def mov_hambre(self):
-        if self.hambre<=99:
-            self.x=600
+        if self.hambre<=90:
+            self.x=500
             self.y=356
+            if self.hambre<=40:
+                self.x=600
+                self.y=356
 
 pet = Pet(400, 356)
 
@@ -87,8 +90,11 @@ while repetir:
         pet.draw(ventana)
         pet.valor_stats(ventana)
         pet.resta_stats()
+        
         pet.mov_feli()
         pet.mov_hambre()
+        pet.pos_estandar()
+        
         ventana.blit(boton_alimento_imag, boton_alimento_rect.topleft)
         ventana.blit(boton_felicidad_imag,boton_felicidad_rect.topright)
         pygame.display.flip()
