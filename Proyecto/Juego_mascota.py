@@ -23,7 +23,7 @@ fondos_niveles = [
 
 # Jugador
 animal_imagen = pygame.image.load("imagenes/mogus.png")
-animal_explosion = pygame.image.load("imagenes/explode.png")
+#animal_explosion = pygame.image.load("imagenes/")
 animal_velocidad = 10
 animal_ancho = animal_imagen.get_width()
 animal_alto = animal_imagen.get_height()
