@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
-import time # Import the time module
-import math # Import the math module for sine function
+import time
+import math 
 
 pygame.init()
 ventana_x=1024
