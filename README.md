@@ -1,5 +1,5 @@
 # Proyecto-de-mascota-virtual
-Proyecto de primer semestre de la carrera de Ingeniería Civil Informática Ulagos
+Proyecto de primer semestre de la carrera de Ingeniería Civil Informática, Ulagos
 
 La finalidad de este proyecto es generar conciencia a largo plazo para las generaciones más pequeñas y futuras acerca el cuidado de la fauna local Chilena.
 
