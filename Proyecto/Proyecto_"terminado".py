@@ -17,7 +17,10 @@ fondos_niveles=[
     pygame.image.load("Proyecto/imagenes/Fondo.jpg")
 ]
 
-animal_imagen = pygame.image.load("Proyecto/imagenes/mogus.png")
+animal_imagen = pygame.image.load("Proyecto/imagenes/zorro.png")
+animal_limpio = pygame.image.load("Proyecto/imagenes/zorro_limpio.png")
+animal_normal = pygame.image.load("Proyecto/imagenes/zorro.png")
+animal_sucio = pygame.image.load("Proyecto/imagenes/zorro_sucio.png")
 animal_ancho = animal_imagen.get_width()
 animal_alto = animal_imagen.get_height()
 
@@ -27,7 +30,7 @@ objeto_imagenes=[
 ]
 objeto_imagenes_nivel2 = [
     pygame.image.load("Proyecto/imagenes/gota.png"),  
-    pygame.image.load("Proyecto/imagenes/explode.png")     
+    pygame.image.load("Proyecto/imagenes/gota_barro.png")     
 ]
 
 texto_puntos = pygame.font.SysFont("comicsans", 40, True)
@@ -45,7 +48,7 @@ def pantalla_inicio():
     texto_linea1 = fuente_subtitulo.render("- Consigue manzana y gotas", True, BLANCO)
     texto_linea2 = fuente_subtitulo.render("- Evita hojas y lodo", True, BLANCO)
 
-    # Dibujar textos en pantalla
+    #Dibujar textos en pantalla
     ventana.blit(texto_titulo, texto_titulo.get_rect(center=(ancho_ventana // 2, alto_ventana // 2 - 100)))
     ventana.blit(texto_comenzar, texto_comenzar.get_rect(center=(ancho_ventana // 2, alto_ventana // 2 - 40)))
     ventana.blit(texto_controles, texto_controles.get_rect(center=(ancho_ventana // 2, alto_ventana // 2)))
@@ -85,7 +88,7 @@ def mostrar_resultado_final(hambre, limpieza, final=False):
 
     if final:
         mensaje = "Tu mascota sufrió de hambre y se fue con dios :("
-    elif hambre <= 10 and limpieza >= 80:
+    elif hambre <= 10 and limpieza >= 60:
         mensaje = "Excelente tu mascota puede ser liberada."
     elif hambre <= 30 and limpieza >= 30:
         mensaje = "¡Buen trabajo! Pero podrías mejorar."
@@ -127,7 +130,7 @@ def jugar_niveles():
     pygame.mixer.music.play(-1)
 
     nivel = 0
-    meta_puntos = 100
+    meta_puntos = 80
     puntaje_hambre = 0
     puntaje_limpieza = 0
     esta_jugando = True
@@ -185,24 +188,24 @@ def jugar_niveles():
                 objeto_y = -objeto_alto
                 objeto_x = random.randint(0, ancho_ventana - objeto_ancho)
                 if objeto_velocidad < 15:
-                    objeto_velocidad += 1
+                    objeto_velocidad += 2
                 objeto_tipo = random.choice([0, 1])
 
             # Colisión
             if (objeto_y + objeto_alto > animal_y and animal_y + animal_alto > objeto_y and
                 animal_x + animal_ancho > objeto_x and animal_x < objeto_x + objeto_ancho):
-                if objeto_tipo == 1:
-                    if nivel == 0:
-                        puntaje += 5
+                if objeto_tipo==1:
+                    if nivel==0:
+                        puntaje+=5
                     else:
-                        puntaje -= 5
-                        if puntaje < 0:
-                            puntaje = 0
+                        puntaje-=5
+                        if puntaje<0:
+                            puntaje=0
                 else:
-                    if nivel == 0:
-                        puntaje -= 5
-                        if puntaje < 0:
-                            puntaje = 0
+                    if nivel==0:
+                        puntaje-=5
+                        if puntaje<0:
+                            puntaje=0
                     else:
                         puntaje += 5
                         if puntaje > 100:
@@ -212,7 +215,17 @@ def jugar_niveles():
                 objeto_tipo = random.choice([0, 1])
 
             ventana.blit(fondo, (0, 0))
+            if nivel==1:
+                if puntaje>=60:
+                    animal_imagen=animal_limpio
+                elif puntaje>=30:
+                    animal_imagen=animal_normal
+                else:
+                    animal_imagen=animal_sucio
+            else:
+                animal_imagen=animal_normal
             ventana.blit(animal_imagen, (animal_x, animal_y))
+
             if nivel == 0:
                 ventana.blit(objeto_imagenes[objeto_tipo], (objeto_x, objeto_y))
             else:
