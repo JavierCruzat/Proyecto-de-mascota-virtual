@@ -5,4 +5,4 @@ La finalidad de este proyecto es generar conciencia a largo plazo para las gener
 
 La idea es crear un programa de mascota virtual en el que cuidaríamos de alguna especie en peligro como el zorro chilote o el pingüino de humboldt hasta alcanzar una edad en la que sea capaz de valerse por si misma y liberarla.
 
-Este proyecto está siendo realizado por Bruno Villarroel, Rodrigo Chaura y Javier Cruzat
+Este proyecto está siendo realizado por Bruno Villarroel, Rodrigo Chaura y Javier Cruzat.
