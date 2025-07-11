@@ -41,12 +41,12 @@ def pantalla_inicio():
     fuente_subtitulo = pygame.font.SysFont("comicsans", 20, True)
 
     texto_titulo = fuente_titulo.render("ChiPet", True, BLANCO)
-    texto_comenzar = fuente_subtitulo.render("Pulsa R para comenzar", True, BLANCO)
+    texto_comenzar = fuente_subtitulo.render("Pulsa R para iniciar el juego.", True, BLANCO)
     texto_controles = fuente_subtitulo.render("Controles (<- ->)", True, BLANCO)
     
-    texto_objetivo_titulo = fuente_subtitulo.render("Objetivo:", True, BLANCO)
-    texto_linea1 = fuente_subtitulo.render("- Consigue manzana y gotas", True, BLANCO)
-    texto_linea2 = fuente_subtitulo.render("- Evita hojas y lodo", True, BLANCO)
+    texto_objetivo_titulo = fuente_subtitulo.render("Objetivos:", True, BLANCO)
+    texto_linea1 = fuente_subtitulo.render("- Consigue manzana y gotas de agua (aumentan el puntaje)", True, BLANCO)
+    texto_linea2 = fuente_subtitulo.render("- Evita las hojas y las gotas de lodo (bajan el puntaje)", True, BLANCO)
 
     #Dibujar textos en pantalla
     ventana.blit(texto_titulo, texto_titulo.get_rect(center=(ancho_ventana // 2, alto_ventana // 2 - 100)))
@@ -88,7 +88,7 @@ def mostrar_resultado_final(hambre, limpieza, final=False):
 
     if final:
         mensaje = "Tu mascota sufrió de hambre y se fue con dios :("
-    elif hambre <= 10 and limpieza >= 60:
+    elif hambre <= 10 and limpieza >= 50:
         mensaje = "Excelente tu mascota puede ser liberada."
     elif hambre <= 30 and limpieza >= 30:
         mensaje = "¡Buen trabajo! Pero podrías mejorar."
